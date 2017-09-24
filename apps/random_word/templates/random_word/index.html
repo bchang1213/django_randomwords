@@ -5,11 +5,17 @@
 	<title>Random Words Generator</title>
 </head>
 <body>
-	<h1>Random Word Generator</h1>
-	<p>Random Word (attempt #)</p>
+	<h3>Random Word Generator</h3>
+	<p>Random Word (attempt #{{ request.session.tries }})</p>
+	<h1>{{ request.session.rand_word }}</h1>
 	<form action="/generate" method="POST">
 		{% csrf_token %}
-		<input type="submit" name="Generate">
+		<input type="submit" name="generate">
+	</form>
+
+	<form action="/reset" method="post">
+		{% csrf_token %}
+		<button>Reset</button>
 	</form>
 </body>
 </html>
